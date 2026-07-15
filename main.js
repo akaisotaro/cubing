@@ -1,4 +1,3 @@
-```javascript
 import { connectGanCube }
 from "https://cdn.jsdelivr.net/npm/gan-web-bluetooth@3.0.2/dist/gan-web-bluetooth.esm.js";
 
@@ -199,4 +198,3 @@ document.getElementById("connect")
 
 
 };
-```
