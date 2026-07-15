@@ -1,10 +1,7 @@
-import { connectSmartPuzzle }
-from "https://cdn.cubing.net/v0/js/cubing/bluetooth";
+```javascript
+import { connectGanCube }
+from "https://cdn.jsdelivr.net/npm/gan-web-bluetooth@3.0.2/dist/gan-web-bluetooth.esm.js";
 
-let puzzle = null;
-let connected = false;
-
-let currentMove = "-";
 
 const moves = [
     "U","U'",
@@ -15,168 +12,191 @@ const moves = [
     "B","B'"
 ];
 
-const buttons = [];
 
-function handleMove(move){
+const chords = {
 
-    currentMove = move;
+    "U":[261.63,329.63,392.00],
+    "U'":[293.66,349.23,440.00],
 
-    console.log(move);
+    "R":[392.00,493.88,587.33],
+    "R'":[440.00,523.25,659.25],
 
-}
+    "F":[349.23,440.00,523.25],
+    "F'":[329.63,392.00,493.88],
 
-async function connectCube(){
+    "D":[293.66,369.99,440.00],
+    "D'":[246.94,293.66,369.99],
 
-    if(connected) return;
+    "L":[220.00,277.18,329.63],
+    "L'":[174.61,220.00,261.63],
 
-    try{
+    "B":[196.00,246.94,293.66],
+    "B'":[164.81,207.65,246.94]
 
-        puzzle = await connectSmartPuzzle();
+};
 
-        connected = true;
 
-        puzzle.addAlgLeafListener((e)=>{
+const current =
+document.getElementById("current");
 
-            handleMove(
-                e.latestAlgLeaf.toString()
-            );
 
-        });
+const audio =
+new AudioContext();
 
-    }
-    catch(err){
 
-        console.log(err);
 
-    }
+async function enableAudio(){
 
-}
-
-function setup(){
-
-    createCanvas(windowWidth, windowHeight);
-
-    textAlign(CENTER,CENTER);
-    textSize(24);
-
-    const w = 90;
-    const h = 60;
-
-    let y = 120;
-
-    let i = 0;
-
-    for(let r=0;r<3;r++){
-
-        let x = 20;
-
-        for(let c=0;c<4;c++){
-
-            buttons.push({
-
-                x:x,
-                y:y,
-                w:w,
-                h:h,
-                move:moves[i]
-
-            });
-
-            x += 100;
-            i++;
-
-        }
-
-        y += 80;
-
+    if(audio.state === "suspended"){
+        await audio.resume();
     }
 
 }
 
-function draw(){
 
-    background(240);
 
-    fill(connected ? "green" : "lightgray");
-    rect(20,20,180,60,10);
+function playChord(freqs){
 
-    fill(0);
-
-    text(
-        connected ? "接続済み" : "接続",
-        110,
-        50
-    );
-
-    for(const b of buttons){
-
-        fill(255);
-
-        rect(
-            b.x,
-            b.y,
-            b.w,
-            b.h,
-            8
-        );
-
-        fill(0);
-
-        text(
-            b.move,
-            b.x+b.w/2,
-            b.y+b.h/2
-        );
-
-    }
-
-    textSize(40);
-
-    fill("blue");
-
-    text(
-        currentMove,
-        width/2,
-        height-80
-    );
-
-}
-
-function mousePressed(){
-
-    if(
-        mouseX>=20 &&
-        mouseX<=200 &&
-        mouseY>=20 &&
-        mouseY<=80
-    ){
-
-        connectCube();
-
+    if(!freqs){
         return;
     }
 
-    for(const b of buttons){
 
-        if(
-            mouseX>=b.x &&
-            mouseX<=b.x+b.w &&
-            mouseY>=b.y &&
-            mouseY<=b.y+b.h
-        ){
+    for(const freq of freqs){
 
-            handleMove(b.move);
+        const osc =
+        audio.createOscillator();
 
-            break;
+        const gain =
+        audio.createGain();
 
-        }
+
+        osc.type="sine";
+        osc.frequency.value=freq;
+
+
+        gain.gain.value=0.15;
+
+
+        osc.connect(gain);
+        gain.connect(audio.destination);
+
+
+        osc.start();
+
+
+        gain.gain.exponentialRampToValueAtTime(
+            0.001,
+            audio.currentTime + 0.8
+        );
+
+
+        osc.stop(
+            audio.currentTime + 0.8
+        );
 
     }
 
 }
 
-function windowResized(){
 
-    resizeCanvas(windowWidth,windowHeight);
+
+function handleMove(move){
+
+    console.log(move);
+
+    current.textContent = move;
+
+
+    playChord(
+        chords[move]
+    );
 
 }
+
+
+
+// 手動ボタン
+
+const buttons =
+document.getElementById("buttons");
+
+
+for(const move of moves){
+
+    const button =
+    document.createElement("button");
+
+
+    button.textContent =
+    move;
+
+
+    button.onclick=async()=>{
+
+        await enableAudio();
+
+        handleMove(move);
+
+    };
+
+
+    buttons.appendChild(button);
+
+}
+
+
+
+// GAN接続
+
+document.getElementById("connect")
+.onclick = async()=>{
+
+
+    await enableAudio();
+
+
+    const conn =
+    await connectGanCube(
+        async()=>{
+            return "70:19:88:8F:A4:58";
+        }
+    );
+
+
+    console.log("GAN Connected");
+
+
+    const button =
+    document.getElementById("connect");
+
+
+    button.disabled=true;
+    button.textContent="接続済み";
+
+
+
+    conn.events$.subscribe(
+        event=>{
+
+
+            console.log(event);
+
+
+            if(event.type==="MOVE"){
+
+
+                handleMove(
+                    event.move
+                );
+
+
+            }
+
+
+        }
+    );
+
+
+};
+```
