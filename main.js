@@ -1,6 +1,9 @@
+console.log("main.js loaded");
+
 import { connectGanCube }
 from "https://cdn.jsdelivr.net/npm/gan-web-bluetooth@3.0.2/+esm";
 
+console.log("gan-web-bluetooth loaded");
 
 const moves = [
     "U","U'",
