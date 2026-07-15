@@ -1,38 +1,67 @@
+```html
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="utf-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>GAN Music Cube</title>
 
 <style>
 
-html,body{
-
-    margin:0;
-    padding:0;
-    background:#222;
-    overflow:hidden;
-
+body{
+    font-family:sans-serif;
+    margin:20px;
+    text-align:center;
 }
 
-canvas{
+#connect{
+    width:200px;
+    height:50px;
+    font-size:20px;
+}
 
-    display:block;
+#buttons{
+    display:grid;
+    grid-template-columns:repeat(4,80px);
+    gap:10px;
+    justify-content:center;
+    margin-top:30px;
+}
 
+button{
+    height:60px;
+    font-size:24px;
+}
+
+#current{
+    margin-top:40px;
+    font-size:70px;
+    font-weight:bold;
+    color:#0066cc;
 }
 
 </style>
-
-<script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.min.js"></script>
 
 </head>
 
 <body>
 
-<script type="module" src="main.js"></script>
+<h1>GAN Music Cube</h1>
+
+<button id="connect">
+GAN接続
+</button>
+
+<div id="buttons"></div>
+
+<div id="current">
+-
+</div>
+
+
+<script type="module" src="./main.js"></script>
 
 </body>
 </html>
+```
