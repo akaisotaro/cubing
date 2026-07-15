@@ -1,1 +1,3 @@
 # cubing
+
+- For Github Pages
