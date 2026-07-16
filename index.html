@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>GAN Music Cube</title>
+<title>cubing</title>
 
 <style>
 
@@ -28,16 +28,34 @@ body{
     margin-top:30px;
 }
 
-button{
-    height:60px;
-    font-size:24px;
-}
-
 #current{
     margin-top:40px;
     font-size:70px;
     font-weight:bold;
     color:#0066cc;
+}
+
+button{
+    height:60px;
+    font-size:24px;
+    position:relative;
+}
+
+.note{
+    position:absolute;
+    right:5px;
+    bottom:3px;
+    font-size:11px;
+    color:#666;
+    pointer-events:none;
+}
+
+#preset{
+    display:block;
+    margin:15px auto 0;
+    width:200px;
+    height:40px;
+    font-size:18px;
 }
 
 </style>
@@ -46,11 +64,17 @@ button{
 
 <body>
 
-<h1>GAN Music Cube</h1>
+<h1> </h1>
 
 <button id="connect">
-GAN接続
+接続
 </button>
+
+<select id="preset">
+    <option value="preset1">preset1</option>
+    <option value="preset2">preset2</option>
+    <option value="preset3">preset3</option>
+</select>
 
 <div id="buttons"></div>
 
