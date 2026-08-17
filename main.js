@@ -1,285 +1,763 @@
-console.log("main.js loaded");
 
-import { connectGanCube }
-from "https://cdn.jsdelivr.net/npm/gan-web-bluetooth@3.0.2/+esm";
-
-console.log("gan-web-bluetooth loaded");
+import {
+    connectGanCube
+} from "https://cdn.jsdelivr.net/npm/gan-web-bluetooth@3.0.2/+esm";
 
 const moves = [
     null,
-    {move:"U'"},
-    {move:"U"},
+    { move: "U'" },
+    { move: "U" },
     null,
-
-    {move:"L"},
-    {move:"B'"},
-    {move:"B"},
-    {move:"R'"},
-
-    {move:"L'"},
-    {move:"F"},
-    {move:"F'"},
-    {move:"R"},
-
+    { move: "L" },
+    { move: "B'" },
+    { move: "B" },
+    { move: "R'" },
+    { move: "L'" },
+    { move: "F" },
+    { move: "F'" },
+    { move: "R" },
     null,
-    {move:"D"},
-    {move:"D'"},
+    { move: "D" },
+    { move: "D'" },
     null
 ];
 
+const faceColors = {
+};
+
+const sounds = {
+    "U":  "sounds/U.mp3",
+    "R":  "sounds/R.mp3",
+    "F":  "sounds/F.mp3",
+    "D":  "sounds/D.mp3",
+    "L":  "sounds/L.mp3",
+    "B":  "sounds/B.mp3",
+    "U'": "sounds/U_.mp3",
+    "R'": "sounds/R_.mp3",
+    "F'": "sounds/F_.mp3",
+    "D'": "sounds/D_.mp3",
+    "L'": "sounds/L_.mp3",
+    "B'": "sounds/B_.mp3"
+};
+
+const PRESET_COUNT = 3;
+
 const presets = {
-    preset1:{
-        chords:{
-            "U":[261.63,329.63,392.00],
-            "U'":[293.66,349.23,440.00],
-            "R":[392.00,493.88,587.33],
-            "R'":[440.00,523.25,659.25],
-            "F":[349.23,440.00,523.25],
-            "F'":[329.63,392.00,493.88],
-            "D":[293.66,369.99,440.00],
-            "D'":[246.94,293.66,369.99],
-            "L":[220.00,277.18,329.63],
-            "L'":[174.61,220.00,261.63],
-            "B":[196.00,246.94,293.66],
-            "B'":[164.81,207.65,246.94]
+
+    preset1: {
+
+        name: "Preset 1",
+
+        // 各面の色
+        faceColors: {
+
+            "U": "#8f8f8f",
+            "F": "#366936",
+            "D": "#7c7c3f",
+            "L": "#834141",
+            "R": "#81623e",
+            "B": "#415a80"
+
         },
-        notes:{
-            "U'":"1",
-            "U":"2",
-            "L":"3",
-            "B'":"4",
-            "B":"5",
-            "R'":"6",
-            "L'":"7",
-            "F":"8",
-            "F'":"9",
-            "R":"10",
-            "D":"11",
-            "D'":"12"
+
+        // 各回転に対応する音声
+        sounds: {
+
+            "U":  "sounds/preset1/D.mp3",
+            "U'": "sounds/preset1/Gs.mp3",
+
+            "R":  "sounds/preset1/C.mp3",
+            "R'": "sounds/preset1/Fs.mp3",
+
+            "F":  "sounds/preset1/F.mp3",
+            "F'": "sounds/preset1/B.mp3",
+
+            "D":  "sounds/preset1/Cs.mp3",
+            "D'": "sounds/preset1/G.mp3",
+
+            "L":  "sounds/preset1/E.mp3",
+            "L'": "sounds/preset1/As.mp3",
+
+            "B":  "sounds/preset1/Ds.mp3",
+            "B'": "sounds/preset1/A.mp3"
+
+        },
+
+        // 各回転に対応する表示文字
+        notes: {
+
+            "U'": "1",
+            "U":  "2",
+
+            "L":  "3",
+
+            "B'": "4",
+            "B":  "5",
+
+            "R'": "6",
+
+            "L'": "7",
+
+            "F":  "8",
+            "F'": "9",
+
+            "R":  "10",
+
+            "D":  "11",
+            "D'": "12"
+
         }
+
     },
 
-    preset2:{
-        chords:{
-            "U":[261.63,392.00,523.25],
-            "U'":[293.66,440.00,587.33],
-            "R":[329.63,493.88,659.25],
-            "R'":[349.23,523.25,698.46],
-            "F":[220.00,329.63,440.00],
-            "F'":[246.94,369.99,493.88],
-            "D":[196.00,293.66,392.00],
-            "D'":[174.61,261.63,349.23],
-            "L":[146.83,220.00,293.66],
-            "L'":[130.81,196.00,261.63],
-            "B":[164.81,246.94,329.63],
-            "B'":[155.56,233.08,311.13]
+
+    preset2: {
+
+        name: "Preset 2",
+
+        faceColors: {
+            "U": "#8f8f8f",
+            "F": "#366936",
+            "D": "#7c7c3f",
+            "L": "#834141",
+            "R": "#81623e",
+            "B": "#415a80"
         },
-        notes:{
-            "U'":"A",
-            "U":"B",
-            "L":"C",
-            "B'":"D",
-            "B":"E",
-            "R'":"F",
-            "L'":"G",
-            "F":"H",
-            "F'":"I",
-            "R":"J",
-            "D":"K",
-            "D'":"L"
+
+        sounds: {
+
+            "U":  "sounds/preset2/sn2.mp3",
+            "U'": "sounds/preset2/bd2.mp3",
+
+            "R":  "sounds/preset2/hh1.mp3",
+            "R'": "sounds/preset2/hh2.mp3",
+
+            "F":  "sounds/preset2/hh3.mp3",
+            "F'": "sounds/preset2/hh4.mp3",
+
+            "D":  "sounds/preset2/bd1.mp3",
+            "D'": "sounds/preset2/sn1.mp3",
+
+            "L":  "sounds/preset2/hh1.mp3",
+            "L'": "sounds/preset2/hh2.mp3",
+
+            "B":  "sounds/preset2/hh3.mp3",
+            "B'": "sounds/preset2/hh4.mp3"
+
+        },
+
+        notes: {
+
+            "U'": "A",
+            "U":  "B",
+
+            "L":  "C",
+
+            "B'": "D",
+            "B":  "E",
+
+            "R'": "F",
+
+            "L'": "G",
+
+            "F":  "H",
+            "F'": "I",
+
+            "R":  "J",
+
+            "D":  "K",
+            "D'": "L"
+
         }
+
     },
 
-    preset3:{
-        chords:{
-            "U":[261.63,311.13,392.00],
-            "U'":[293.66,349.23,415.30],
-            "R":[329.63,392.00,493.88],
-            "R'":[349.23,440.00,523.25],
-            "F":[220.00,293.66,349.23],
-            "F'":[246.94,311.13,392.00],
-            "D":[196.00,261.63,329.63],
-            "D'":[174.61,233.08,293.66],
-            "L":[146.83,196.00,246.94],
-            "L'":[130.81,174.61,220.00],
-            "B":[164.81,220.00,277.18],
-            "B'":[155.56,207.65,261.63]
+
+    preset3: {
+
+        name: "Preset 3",
+
+        faceColors: {
+            "U": "#8f8f8f",
+            "F": "#366936",
+            "D": "#7c7c3f",
+            "L": "#834141",
+            "R": "#81623e",
+            "B": "#415a80"
         },
-        notes:{
-            "U'":"1",
-            "U":"2",
-            "L":"3",
-            "B'":"4",
-            "B":"5",
-            "R'":"6",
-            "L'":"7",
-            "F":"8",
-            "F'":"9",
-            "R":"10",
-            "D":"11",
-            "D'":"12"
+
+        sounds: {
+
+            "U":  "sounds/preset3/D.mp3",
+            "U'": "sounds/preset3/Gs.mp3",
+
+            "R":  "sounds/preset3/C.mp3",
+            "R'": "sounds/preset3/Fs.mp3",
+
+            "F":  "sounds/preset3/F.mp3",
+            "F'": "sounds/preset3/B.mp3",
+
+            "D":  "sounds/preset3/Cs.mp3",
+            "D'": "sounds/preset3/G.mp3",
+
+            "L":  "sounds/preset3/E.mp3",
+            "L'": "sounds/preset3/As.mp3",
+
+            "B":  "sounds/preset3/Ds.mp3",
+            "B'": "sounds/preset3/A.mp3"
+
+        },
+
+        notes: {
+
+            "U'": "1",
+            "U":  "2",
+
+            "L":  "3",
+
+            "B'": "4",
+            "B":  "5",
+
+            "R'": "6",
+
+            "L'": "7",
+
+            "F":  "8",
+            "F'": "9",
+
+            "R":  "10",
+
+            "D":  "11",
+            "D'": "12"
+
         }
+
     }
 
 };
 
-let currentPreset = presets.preset1;
 
-document.getElementById("preset").onchange = (e)=>{
+// ==================================================
+// DOM
+// ==================================================
 
-    currentPreset = presets[e.target.value];
+const current =
+    document.getElementById("current");
 
-    document.querySelectorAll("#buttons button").forEach(button=>{
+const buttons =
+    document.getElementById("buttons");
 
-        const move = button.dataset.move;
+const connectButton =
+    document.getElementById("connect");
 
-        button.querySelector(".note").textContent =
-            currentPreset.notes[move];
+const presetSelect =
+    document.getElementById("preset");
 
-    });
 
-};
+// ==================================================
+// 現在のプリセット
+// ==================================================
 
-const current = document.getElementById("current");
-const audio = new AudioContext();
+let currentPreset =
+    presets.preset1;
 
-async function enableAudio(){
 
-    if(audio.state === "suspended"){
+// ==================================================
+// AudioContext
+// ==================================================
+
+const audio =
+    new AudioContext();
+
+
+// ==================================================
+// AudioBuffer
+// ==================================================
+
+const audioBuffers = {};
+
+
+// ==================================================
+// AudioContextを有効化
+// ==================================================
+
+async function enableAudio() {
+
+    if (
+        audio.state === "suspended"
+    ) {
+
         await audio.resume();
+
     }
 
 }
 
-function playChord(freqs){
 
-    if(!freqs){
+// ==================================================
+// 音声読み込み
+// ==================================================
+
+async function loadSound(
+    move,
+    path
+) {
+
+    console.log(
+        "Loading:",
+        move,
+        path
+    );
+
+
+    const response =
+        await fetch(path);
+
+
+    if (!response.ok) {
+
+        throw new Error(
+            `Failed to load: ${path}`
+        );
+
+    }
+
+
+    const arrayBuffer =
+        await response.arrayBuffer();
+
+
+    const audioBuffer =
+        await audio.decodeAudioData(
+            arrayBuffer
+        );
+
+
+    audioBuffers[move] =
+        audioBuffer;
+
+
+    console.log(
+        "Loaded:",
+        move
+    );
+
+}
+
+
+// ==================================================
+// 現在のプリセットの音声を読み込む
+// ==================================================
+
+async function loadPresetSounds() {
+
+    // 既存の音声を削除
+    for (
+        const key
+        of Object.keys(audioBuffers)
+    ) {
+
+        delete audioBuffers[key];
+
+    }
+
+
+    const promises = [];
+
+
+    for (
+        const [move, path]
+        of Object.entries(
+            currentPreset.sounds
+        )
+    ) {
+
+        promises.push(
+            loadSound(
+                move,
+                path
+            )
+        );
+
+    }
+
+
+    await Promise.all(
+        promises
+    );
+
+
+    console.log(
+        "Preset sounds loaded:",
+        currentPreset.name
+    );
+
+}
+
+
+// ==================================================
+// 音声再生
+// ==================================================
+
+function playSound(move) {
+
+    const buffer =
+        audioBuffers[move];
+
+
+    if (!buffer) {
+
+        console.warn(
+            "AudioBuffer not found:",
+            move
+        );
+
         return;
-    }
-
-
-    for(const freq of freqs){
-
-        const osc =
-        audio.createOscillator();
-
-        const gain =
-        audio.createGain();
-
-
-        osc.type="sine";
-        osc.frequency.value=freq;
-
-
-        gain.gain.value=0.15;
-
-
-        osc.connect(gain);
-        gain.connect(audio.destination);
-
-
-        osc.start();
-
-
-        gain.gain.exponentialRampToValueAtTime(
-            0.001,
-            audio.currentTime + 0.8
-        );
-
-
-        osc.stop(
-            audio.currentTime + 0.8
-        );
 
     }
 
+
+    const source =
+        audio.createBufferSource();
+
+
+    source.buffer =
+        buffer;
+
+
+    source.connect(
+        audio.destination
+    );
+
+
+    source.start();
+
 }
 
-function handleMove(move){
-    console.log(move);
-    current.textContent = move;
-    playChord(currentPreset.chords[move]);
+
+// ==================================================
+// ボタンの表示を更新
+// ==================================================
+
+function updateButtons() {
+
+    const buttonElements =
+        document.querySelectorAll(
+            "#buttons button"
+        );
+
+
+    buttonElements.forEach(
+        button => {
+
+            const move =
+                button.dataset.move;
+
+
+            // U' → U
+            // R' → R
+            const face =
+                move.replace(
+                    "'",
+                    ""
+                );
+
+
+            // 色を変更
+            button.style.backgroundColor =
+                currentPreset.faceColors[face];
+
+
+            button.style.color =
+                "#000000";
+
+
+
+            // 表示文字を変更
+            const note =
+                button.querySelector(
+                    ".note"
+                );
+
+
+            note.textContent =
+                currentPreset.notes[move];
+
+        }
+    );
+
 }
 
-// 手動ボタン
 
-const buttons = document.getElementById("buttons");
+// ==================================================
+// 回転処理
+// ==================================================
+
+function handleMove(move) {
+
+    console.log(
+        "MOVE:",
+        move
+    );
+
+
+    // 現在の回転を表示
+    current.textContent =
+        move;
+
+
+    // 音声再生
+    playSound(
+        move
+    );
+
+}
+
+
+// ==================================================
+// 手動ボタン生成
+// ==================================================
 
 for (const item of moves) {
 
     if (item === null) {
-        buttons.appendChild(document.createElement("div"));
+
+        buttons.appendChild(
+            document.createElement(
+                "div"
+            )
+        );
+
         continue;
+
     }
-
-    const button = document.createElement("button");
-
-    button.dataset.move = item.move;
-
-    button.innerHTML = `
-        ${item.move}
-        <span class="note">${currentPreset.notes[item.move]}</span>
-    `;
-
-    button.onclick = async () => {
-        await enableAudio();
-        handleMove(item.move);
-    };
-
-    buttons.appendChild(button);
-}
-
-
-
-// GAN接続
-
-document.getElementById("connect")
-.onclick = async()=>{
-
-
-    await enableAudio();
-
-
-    const conn =
-    await connectGanCube(
-        async()=>{
-            return "70:19:88:8F:A4:58";
-        }
-    );
-
-
-    console.log("GAN Connected");
 
 
     const button =
-    document.getElementById("connect");
+        document.createElement(
+            "button"
+        );
 
 
-    button.disabled=true;
-    button.textContent="接続済み";
+    button.dataset.move =
+        item.move;
 
 
-
-    conn.events$.subscribe(
-        event=>{
-
-
-            console.log(event);
-
-
-            if(event.type==="MOVE"){
+    button.innerHTML = `
+        ${item.move}
+        <span class="note">
+            ${currentPreset.notes[item.move]}
+        </span>
+    `;
 
 
-                handleMove(
-                    event.move
+    button.onclick = async () => {
+
+        await enableAudio();
+
+
+        handleMove(
+            item.move
+        );
+
+    };
+
+
+    buttons.appendChild(
+        button
+    );
+
+}
+
+
+// ==================================================
+// プリセット選択肢を生成
+// ==================================================
+
+for (
+    let i = 1;
+    i <= PRESET_COUNT;
+    i++
+) {
+
+    const key =
+        `preset${i}`;
+
+
+    if (!presets[key]) {
+
+        console.warn(
+            `Preset not found: ${key}`
+        );
+
+        continue;
+
+    }
+
+
+    const option =
+        document.createElement(
+            "option"
+        );
+
+
+    option.value =
+        key;
+
+
+    option.textContent =
+        presets[key].name;
+
+
+    presetSelect.appendChild(
+        option
+    );
+
+}
+
+
+// ==================================================
+// プリセット変更
+// ==================================================
+
+presetSelect.onchange =
+    async (event) => {
+
+        const presetKey =
+            event.target.value;
+
+
+        currentPreset =
+            presets[presetKey];
+
+
+        console.log(
+            "Preset changed:",
+            currentPreset.name
+        );
+
+
+        // ボタンの色と文字を更新
+        updateButtons();
+
+
+        // 音声を読み込み
+        try {
+
+            await loadPresetSounds();
+
+        } catch (error) {
+
+            console.error(
+                "Failed to load preset sounds:",
+                error
+            );
+
+        }
+
+    };
+
+
+// ==================================================
+// GANキューブ接続
+// ==================================================
+
+connectButton.onclick =
+    async () => {
+
+        try {
+
+            await enableAudio();
+
+
+            const conn =
+                await connectGanCube(
+                    async () => {
+
+                        return "70:19:88:8F:A4:58";
+
+                    }
                 );
 
 
-            }
+            console.log(
+                "GAN Connected"
+            );
 
+
+            connectButton.disabled =
+                true;
+
+
+            connectButton.textContent =
+                "接続済み";
+
+
+            conn.events$.subscribe(
+                event => {
+
+                    console.log(
+                        event
+                    );
+
+
+                    if (
+                        event.type === "MOVE"
+                    ) {
+
+                        handleMove(
+                            event.move
+                        );
+
+                    }
+
+                }
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "GAN connection error:",
+                error
+            );
 
         }
-    );
+
+    };
 
 
-};
+// ==================================================
+// 初期化
+// ==================================================
+
+async function initialize() {
+
+    try {
+
+        // ボタンの初期表示
+        updateButtons();
+
+
+        // 初期プリセットの音声を読み込む
+        await loadPresetSounds();
+
+
+        console.log(
+            "Initialization complete"
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Initialization error:",
+            error
+        );
+
+    }
+
+}
+
+
+initialize();
