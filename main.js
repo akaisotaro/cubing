@@ -78,7 +78,7 @@ const presets = {
         faceColors: commonFaceColors,
         sounds: {
             "U":  "sounds/preset3/clap1.mp3",
-            "U'": null,
+            "U'": "sounds/preset3/stab1.mp3",
             "R":  "sounds/preset3/hh1.mp3",
             "R'": "sounds/preset3/hh1.mp3",
             "F":  "sounds/preset3/hh2.mp3",
@@ -254,69 +254,42 @@ async function loadPresetSounds() {
 
 
 // ==================================================
-// 再生回数を管理するカウンタ
-// ==================================================
-
-let playCount = 0;
-
-// ==================================================
 // 音声再生
 // ==================================================
 
 function playSound(move) {
 
-    let soundPath;
-
-    // preset3の特殊処理
-    if (
-        currentPreset.name === "Preset 3" &&
-        move === "U'"
-    ) {
-        playCount++;
-        soundPath =
-            playCount % 2 === 0
-                ? "sounds/preset3/stab1.mp3" // 偶数回目
-                : "sounds/preset3/stab2.mp3"; // 奇数回目
-    } else {
-        soundPath =
-            currentPreset.sounds[move];
-    }
-
-    if (!soundPath) {
-        console.warn(
-            "Sound path not found:",
-            move
-        );
-        return;
-    }
-
     const buffer =
         audioBuffers[move];
 
+
     if (!buffer) {
+
         console.warn(
             "AudioBuffer not found:",
             move
         );
+
         return;
+
     }
+
 
     const source =
         audio.createBufferSource();
 
+
     source.buffer =
         buffer;
+
 
     source.connect(
         audio.destination
     );
 
+
     source.start();
 
-    console.log(
-        "Playing sound:",
-        soundPath
-    );
 }
 
 
