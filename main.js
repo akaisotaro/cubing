@@ -378,52 +378,25 @@ function handleMove(move) {
 for (const item of moves) {
 
     if (item === null) {
-
-        buttons.appendChild(
-            document.createElement(
-                "div"
-            )
-        );
-
+        buttons.appendChild(document.createElement("div"));
         continue;
-
     }
 
+    const button = document.createElement("button");
 
-    const button =
-        document.createElement(
-            "button"
-        );
-
-
-    button.dataset.move =
-        item.move;
-
+    button.dataset.move = item.move;
 
     button.innerHTML = `
-        ${item.move}
-        <span class="note">
-            ${currentPreset.notes[item.move]}
-        </span>
+        <span class="move">${item.move}</span>
+        <span class="note">${currentPreset.notes[item.move]}</span>
     `;
 
-
     button.onclick = async () => {
-
         await enableAudio();
-
-
-        handleMove(
-            item.move
-        );
-
+        handleMove(item.move);
     };
 
-
-    buttons.appendChild(
-        button
-    );
-
+    buttons.appendChild(button);
 }
 
 
