@@ -22,202 +22,74 @@ const moves = [
     null
 ];
 
+const faceColors = {
+    "U": "#8f8f8f",
+    "F": "#366936",
+    "D": "#7c7c3f",
+    "L": "#81623e",
+    "R": "#834141",
+    "B": "#415a80"
+};
+
 const PRESET_COUNT = 3;
 
 const presets = {
 
     preset1: {
-
         name: "Preset 1",
-
-        // 各面の色
-        faceColors: {
-
-            "U": "#8f8f8f",
-            "F": "#366936",
-            "D": "#7c7c3f",
-            "L": "#81623e",
-            "R": "#834141",
-            "B": "#415a80"
-
-        },
-
-        // 各回転に対応する音声
+        faceColors: commonFaceColors,
         sounds: {
-
-            "U":  "sounds/preset1/D.mp3",
-            "U'": "sounds/preset1/Gs.mp3",
-
-            "R":  "sounds/preset1/C.mp3",
-            "R'": "sounds/preset1/Fs.mp3",
-
-            "F":  "sounds/preset1/F.mp3",
-            "F'": "sounds/preset1/B.mp3",
-
-            "D":  "sounds/preset1/Cs.mp3",
-            "D'": "sounds/preset1/G.mp3",
-
-            "L":  "sounds/preset1/E.mp3",
-            "L'": "sounds/preset1/As.mp3",
-
+            "U":  "sounds/preset1/C.mp3",
+            "U'": "sounds/preset1/D.mp3",
+            "R":  "sounds/preset1/E.mp3",
+            "R'": "sounds/preset1/F.mp3",
+            "F":  "sounds/preset1/G.mp3",
+            "F'": "sounds/preset1/Gs.mp3",
+            "D":  "sounds/preset1/As.mp3",
+            "D'": "sounds/preset1/Cs.mp3",
+            "L":  "sounds/preset1/B.mp3",
+            "L'": "sounds/preset1/Cs.mp3",
             "B":  "sounds/preset1/Ds.mp3",
-            "B'": "sounds/preset1/A.mp3"
-
-        },
-
-        // 各回転に対応する表示文字
-        notes: {
-
-            "U'": "Gs",
-            "U":  "D",
-
-            "L":  "E",
-
-            "B'": "A",
-            "B":  "Ds",
-
-            "R'": "Fs",
-
-            "L'": "As",
-
-            "F":  "F",
-            "F'": "B",
-
-            "R":  "C",
-
-            "D":  "Cs",
-            "D'": "G"
-
+            "B'": "sounds/preset1/Fs.mp3"
         }
-
     },
-
 
     preset2: {
-
         name: "Preset 2",
-
-        faceColors: {
-
-            "U": "#8f8f8f",
-            "F": "#366936",
-            "D": "#7c7c3f",
-            "L": "#81623e",
-            "R": "#834141",
-            "B": "#415a80"
-
-        },
-
+        faceColors: commonFaceColors,
         sounds: {
-
-            "U":  "sounds/preset2/C.mp3",
-            "U'": "sounds/preset2/C.mp3",
-
-            "R":  "sounds/preset2/C.mp3",
-            "R'": "sounds/preset2/C.mp3",
-
-            "F":  "sounds/preset2/C.mp3",
-            "F'": "sounds/preset2/C.mp3",
-
-            "D":  "sounds/preset2/C.mp3",
-            "D'": "sounds/preset2/C.mp3",
-
-            "L":  "sounds/preset2/C.mp3",
-            "L'": "sounds/preset2/C.mp3",
-
-            "B":  "sounds/preset2/C.mp3",
-            "B'": "sounds/preset2/C.mp3"
-
-        },
-
-        notes: {
-
-            "U'": "C",
-            "U":  "C",
-
-            "L":  "C",
-
-            "B'": "C",
-            "B":  "C",
-
-            "R'": "C",
-
-            "L'": "C",
-
-            "F":  "C",
-            "F'": "C",
-
-            "R":  "C",
-
-            "D":  "C",
-            "D'": "C"
-
+            "U":  "sounds/preset2/FM.mp3",
+            "U'": "sounds/preset2/Ami.mp3",
+            "R":  "sounds/preset2/E7.mp3",
+            "R'": "sounds/preset2/C7.mp3",
+            "F":  "sounds/preset2/CM.mp3",
+            "F'": "sounds/preset2/CM.mp3",
+            "D":  "sounds/preset2/CM.mp3",
+            "D'": "sounds/preset2/FM.mp3",
+            "L":  "sounds/preset2/Gmi.mp3",
+            "L'": "sounds/preset2/C7.mp3",
+            "B":  "sounds/preset2/C4.mp3",
+            "B'": "sounds/preset2/GM.mp3"
         }
-
     },
 
-
     preset3: {
-
         name: "Preset 3",
-
-        faceColors: {
-
-            "U": "#8f8f8f",
-            "F": "#366936",
-            "D": "#7c7c3f",
-            "L": "#81623e",
-            "R": "#834141",
-            "B": "#415a80"
-
-        },
-
+        faceColors: commonFaceColors,
         sounds: {
-
-            "U":  "sounds/preset3/bd1.mp3",
-            "U'": "sounds/preset3/sn1.mp3",
-
+            "U":  "sounds/preset3/clap1.mp3",
+            "U'": null,
             "R":  "sounds/preset3/hh1.mp3",
             "R'": "sounds/preset3/hh1.mp3",
-
             "F":  "sounds/preset3/hh2.mp3",
             "F'": "sounds/preset3/hh2.mp3",
-
-            "D":  "sounds/preset3/clap1.mp3",
-            "D'": "sounds/preset3/stab1.mp3",
-
+            "D":  "sounds/preset3/bd1.mp3",
+            "D'": "sounds/preset3/sn1.mp3",
             "L":  "sounds/preset3/hh1.mp3",
             "L'": "sounds/preset3/hh1.mp3",
-
             "B":  "sounds/preset3/hh2.mp3",
             "B'": "sounds/preset3/hh2.mp3"
-
-        },
-
-        notes: {
-
-            "U'": "sn1",
-            "U":  "bd1",
-
-            "L":  "hh1",
-
-            "B'": "hh2",
-            "B":  "hh2",
-
-            "R'": "hh1",
-
-            "L'": "hh1",
-
-            "F":  "hh2",
-            "F'": "hh2",
-
-            "R":  "hh1",
-
-            "D":  "clap1",
-            "D'": "stab1"
-
         }
-
     }
 
 };
@@ -382,42 +254,69 @@ async function loadPresetSounds() {
 
 
 // ==================================================
+// 再生回数を管理するカウンタ
+// ==================================================
+
+let playCount = 0;
+
+// ==================================================
 // 音声再生
 // ==================================================
 
 function playSound(move) {
 
+    let soundPath;
+
+    // preset3の特殊処理
+    if (
+        currentPreset.name === "Preset 3" &&
+        move === "U'"
+    ) {
+        playCount++;
+        soundPath =
+            playCount % 2 === 0
+                ? "sounds/preset3/stab1.mp3" // 偶数回目
+                : "sounds/preset3/stab2.mp3"; // 奇数回目
+    } else {
+        soundPath =
+            currentPreset.sounds[move];
+    }
+
+    if (!soundPath) {
+        console.warn(
+            "Sound path not found:",
+            move
+        );
+        return;
+    }
+
     const buffer =
         audioBuffers[move];
 
-
     if (!buffer) {
-
         console.warn(
             "AudioBuffer not found:",
             move
         );
-
         return;
-
     }
-
 
     const source =
         audio.createBufferSource();
 
-
     source.buffer =
         buffer;
-
 
     source.connect(
         audio.destination
     );
 
-
     source.start();
 
+    console.log(
+        "Playing sound:",
+        soundPath
+    );
 }
 
 
@@ -432,13 +331,11 @@ function updateButtons() {
             "#buttons button"
         );
 
-
     buttonElements.forEach(
         button => {
 
             const move =
                 button.dataset.move;
-
 
             // U' → U
             // R' → R
@@ -448,16 +345,12 @@ function updateButtons() {
                     ""
                 );
 
-
             // 色を変更
             button.style.backgroundColor =
                 currentPreset.faceColors[face];
 
-
             button.style.color =
                 "#000000";
-
-
 
             // 表示文字を変更
             const note =
@@ -465,15 +358,20 @@ function updateButtons() {
                     ".note"
                 );
 
+            // soundsからファイル名を抽出して表示
+            const soundPath =
+                currentPreset.sounds[move];
+
+            const fileName =
+                soundPath.split("/").pop().replace(".mp3", "");
 
             note.textContent =
-                currentPreset.notes[move];
+                fileName;
 
         }
     );
 
 }
-
 
 // ==================================================
 // 回転処理
@@ -486,11 +384,15 @@ function handleMove(move) {
         move
     );
 
+    // soundsからファイル名を抽出して表示
+    const soundPath =
+        currentPreset.sounds[move];
 
-    // 現在の回転を表示
+    const fileName =
+        soundPath.split("/").pop().replace(".mp3", "");
+
     current.textContent =
-        move;
-
+        fileName;
 
     // 音声再生
     playSound(
