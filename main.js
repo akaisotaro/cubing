@@ -45,48 +45,48 @@ const presets = {
         // 各回転に対応する音声
         sounds: {
 
-            "U":  "sounds/preset1/D.mp3",
-            "U'": "sounds/preset1/Gs.mp3",
+            "U":  "sounds/preset1/C.mp3",
+            "U'": "sounds/preset1/D.mp3",
 
-            "R":  "sounds/preset1/C.mp3",
-            "R'": "sounds/preset1/Fs.mp3",
+            "R":  "sounds/preset1/E.mp3",
+            "R'": "sounds/preset1/F.mp3",
 
-            "F":  "sounds/preset1/F.mp3",
-            "F'": "sounds/preset1/B.mp3",
+            "F":  "sounds/preset1/G.mp3",
+            "F'": "sounds/preset1/A.mp3",
 
-            "D":  "sounds/preset1/Cs.mp3",
-            "D'": "sounds/preset1/G.mp3",
+            "D":  "sounds/preset1/Gs.mp3",
+            "D'": "sounds/preset1/As.mp3",
 
-            "L":  "sounds/preset1/E.mp3",
-            "L'": "sounds/preset1/As.mp3",
+            "L":  "sounds/preset1/B.mp3",
+            "L'": "sounds/preset1/Cs.mp3",
 
             "B":  "sounds/preset1/Ds.mp3",
-            "B'": "sounds/preset1/A.mp3"
+            "B'": "sounds/preset1/Fs.mp3"
 
         },
 
         // 各回転に対応する表示文字
         notes: {
 
-            "U'": "Gs",
-            "U":  "D",
+            "U'": "D",
+            "U":  "C",
 
-            "L":  "E",
+            "L":  "B",
 
-            "B'": "A",
+            "B'": "Fs",
             "B":  "Ds",
 
-            "R'": "Fs",
+            "R'": "F",
 
-            "L'": "As",
+            "L'": "Cs",
 
-            "F":  "F",
-            "F'": "B",
+            "F":  "G",
+            "F'": "A",
 
-            "R":  "C",
+            "R":  "E",
 
-            "D":  "Cs",
-            "D'": "G"
+            "D":  "Gs",
+            "D'": "As"
 
         }
 
@@ -110,47 +110,47 @@ const presets = {
 
         sounds: {
 
-            "U":  "sounds/preset2/C.mp3",
-            "U'": "sounds/preset2/C.mp3",
+            "U":  "sounds/preset2/FM.mp3",
+            "U'": "sounds/preset2/Ami.mp3",
 
-            "R":  "sounds/preset2/C.mp3",
-            "R'": "sounds/preset2/C.mp3",
+            "R":  "sounds/preset2/E7.mp3",
+            "R'": "sounds/preset2/CM.mp3",
 
-            "F":  "sounds/preset2/C.mp3",
-            "F'": "sounds/preset2/C.mp3",
+            "F":  "sounds/preset2/CM.mp3",
+            "F'": "sounds/preset2/CM.mp3",
 
-            "D":  "sounds/preset2/C.mp3",
-            "D'": "sounds/preset2/C.mp3",
+            "D":  "sounds/preset2/CM.mp3",
+            "D'": "sounds/preset2/FM.mp3",
 
-            "L":  "sounds/preset2/C.mp3",
-            "L'": "sounds/preset2/C.mp3",
+            "L":  "sounds/preset2/Gmi.mp3",
+            "L'": "sounds/preset2/GM.mp3",
 
-            "B":  "sounds/preset2/C.mp3",
-            "B'": "sounds/preset2/C.mp3"
+            "B":  "sounds/preset2/C4.mp3",
+            "B'": "sounds/preset2/C7.mp3"
 
         },
 
         notes: {
 
-            "U'": "C",
-            "U":  "C",
+            "U'": "Am",
+            "U":  "FM",
 
-            "L":  "C",
+            "L":  "Gm",
 
-            "B'": "C",
-            "B":  "C",
+            "B'": "C7",
+            "B":  "C4",
 
-            "R'": "C",
+            "R'": "CM",
 
-            "L'": "C",
+            "L'": "GM",
 
-            "F":  "C",
-            "F'": "C",
+            "F":  "CM",
+            "F'": "CM",
 
-            "R":  "C",
+            "R":  "E7",
 
-            "D":  "C",
-            "D'": "C"
+            "D":  "CM",
+            "D'": "FM"
 
         }
 
@@ -174,8 +174,8 @@ const presets = {
 
         sounds: {
 
-            "U":  "sounds/preset3/bd1.mp3",
-            "U'": "sounds/preset3/sn1.mp3",
+            "U":  "sounds/preset3/clap1.mp3",
+            "U'": "sounds/preset3/clap1.mp3",
 
             "R":  "sounds/preset3/hh1.mp3",
             "R'": "sounds/preset3/hh1.mp3",
@@ -183,26 +183,26 @@ const presets = {
             "F":  "sounds/preset3/hh2.mp3",
             "F'": "sounds/preset3/hh2.mp3",
 
-            "D":  "sounds/preset3/clap1.mp3",
-            "D'": "sounds/preset3/stab1.mp3",
+            "D":  "sounds/preset3/bd1.mp3",
+            "D'": "sounds/preset3/sn1.mp3",
 
             "L":  "sounds/preset3/hh1.mp3",
             "L'": "sounds/preset3/hh1.mp3",
 
-            "B":  "sounds/preset3/hh2.mp3",
-            "B'": "sounds/preset3/hh2.mp3"
+            "B":  "sounds/preset3/stab1.mp3",
+            "B'": "sounds/preset3/stab2.mp3"
 
         },
 
         notes: {
 
-            "U'": "sn1",
-            "U":  "bd1",
+            "U'": "clap1",
+            "U":  "clap1",
 
             "L":  "hh1",
 
-            "B'": "hh2",
-            "B":  "hh2",
+            "B'": "stab2",
+            "B":  "stab1",
 
             "R'": "hh1",
 
@@ -213,8 +213,8 @@ const presets = {
 
             "R":  "hh1",
 
-            "D":  "clap1",
-            "D'": "stab1"
+            "D":  "bd1",
+            "D'": "sn1"
 
         }
 
@@ -227,46 +227,13 @@ const presets = {
 // DOM
 // ==================================================
 
-const current =
-    document.getElementById("current");
-
-const buttons =
-    document.getElementById("buttons");
-
-const connectButton =
-    document.getElementById("connect");
-
-const presetSelect =
-    document.getElementById("preset");
-
-
-// ==================================================
-// 現在のプリセット
-// ==================================================
-
-let currentPreset =
-    presets.preset1;
-
-
-// ==================================================
-// AudioContext
-// ==================================================
-
-const audio =
-    new AudioContext();
-
-
-// ==================================================
-// AudioBuffer
-// ==================================================
-
+const current = document.getElementById("current");
+const buttons = document.getElementById("buttons");
+const connectButton = document.getElementById("connect");
+const presetSelect = document.getElementById("preset");
+let currentPreset = presets.preset1;
+const audio = new AudioContext();
 const audioBuffers = {};
-
-
-// ==================================================
-// AudioContextを有効化
-// ==================================================
-
 async function enableAudio() {
 
     if (
@@ -453,21 +420,14 @@ function updateButtons() {
             button.style.color =
                 "#000000";
 
-            // 表示文字を変更
+            // notesを表示
             const note =
                 button.querySelector(
                     ".note"
                 );
 
-            // soundsのファイル名を取得して表示
-            const soundPath =
-                currentPreset.sounds[move];
-
-            const fileName =
-                soundPath.split("/").pop().replace(".mp3", "");
-
             note.textContent =
-                fileName;
+                currentPreset.notes[move];
 
         }
     );
@@ -491,7 +451,7 @@ function handleMove(move) {
 
     // 現在の回転を表示
     current.textContent =
-        move;
+        currentPreset.notes[move];
 
 
     // 音声再生
@@ -528,17 +488,10 @@ for (const item of moves) {
     button.dataset.move =
         item.move;
 
-    // soundsのファイル名を取得して表示
-    const soundPath =
-        currentPreset.sounds[item.move];
-
-    const fileName =
-        soundPath.split("/").pop().replace(".mp3", "");
-
     button.innerHTML = `
         ${item.move}
         <span class="note">
-            ${fileName}
+            ${currentPreset.notes[item.move]}
         </span>
     `;
 
