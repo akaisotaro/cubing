@@ -22,7 +22,7 @@ const moves = [
     null
 ];
 
-const faceColors = {
+const commonFaceColors = {
     "U": "#8f8f8f",
     "F": "#366936",
     "D": "#7c7c3f",
