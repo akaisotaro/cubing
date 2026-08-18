@@ -292,7 +292,6 @@ function playSound(move) {
 
 }
 
-
 // ==================================================
 // ボタンの表示を更新
 // ==================================================
@@ -304,11 +303,13 @@ function updateButtons() {
             "#buttons button"
         );
 
+
     buttonElements.forEach(
         button => {
 
             const move =
                 button.dataset.move;
+
 
             // U' → U
             // R' → R
@@ -318,12 +319,16 @@ function updateButtons() {
                     ""
                 );
 
+
             // 色を変更
             button.style.backgroundColor =
                 currentPreset.faceColors[face];
 
+
             button.style.color =
                 "#000000";
+
+
 
             // 表示文字を変更
             const note =
@@ -331,20 +336,15 @@ function updateButtons() {
                     ".note"
                 );
 
-            // soundsからファイル名を抽出して表示
-            const soundPath =
-                currentPreset.sounds[move];
-
-            const fileName =
-                soundPath.split("/").pop().replace(".mp3", "");
 
             note.textContent =
-                fileName;
+                currentPreset.notes[move];
 
         }
     );
 
 }
+
 
 // ==================================================
 // 回転処理
@@ -357,15 +357,11 @@ function handleMove(move) {
         move
     );
 
-    // soundsからファイル名を抽出して表示
-    const soundPath =
-        currentPreset.sounds[move];
 
-    const fileName =
-        soundPath.split("/").pop().replace(".mp3", "");
-
+    // 現在の回転を表示
     current.textContent =
-        fileName;
+        currentPreset.notes[move];
+
 
     // 音声再生
     playSound(
