@@ -432,13 +432,11 @@ function updateButtons() {
             "#buttons button"
         );
 
-
     buttonElements.forEach(
         button => {
 
             const move =
                 button.dataset.move;
-
 
             // U' → U
             // R' → R
@@ -448,16 +446,12 @@ function updateButtons() {
                     ""
                 );
 
-
             // 色を変更
             button.style.backgroundColor =
                 currentPreset.faceColors[face];
 
-
             button.style.color =
                 "#000000";
-
-
 
             // 表示文字を変更
             const note =
@@ -465,14 +459,22 @@ function updateButtons() {
                     ".note"
                 );
 
+            // soundsのファイル名を取得して表示
+            const soundPath =
+                currentPreset.sounds[move];
+
+            const fileName =
+                soundPath.split("/").pop().replace(".mp3", "");
 
             note.textContent =
-                currentPreset.notes[move];
+                fileName;
 
         }
     );
 
 }
+
+
 
 
 // ==================================================
@@ -518,36 +520,37 @@ for (const item of moves) {
 
     }
 
-
     const button =
         document.createElement(
             "button"
         );
 
-
     button.dataset.move =
         item.move;
 
+    // soundsのファイル名を取得して表示
+    const soundPath =
+        currentPreset.sounds[item.move];
+
+    const fileName =
+        soundPath.split("/").pop().replace(".mp3", "");
 
     button.innerHTML = `
         ${item.move}
         <span class="note">
-            ${currentPreset.notes[item.move]}
+            ${fileName}
         </span>
     `;
-
 
     button.onclick = async () => {
 
         await enableAudio();
-
 
         handleMove(
             item.move
         );
 
     };
-
 
     buttons.appendChild(
         button
