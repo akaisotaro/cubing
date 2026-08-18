@@ -22,74 +22,202 @@ const moves = [
     null
 ];
 
-const commonFaceColors = {
-    "U": "#8f8f8f",
-    "F": "#366936",
-    "D": "#7c7c3f",
-    "L": "#81623e",
-    "R": "#834141",
-    "B": "#415a80"
-};
-
 const PRESET_COUNT = 3;
 
 const presets = {
 
     preset1: {
+
         name: "Preset 1",
-        faceColors: commonFaceColors,
+
+        // 各面の色
+        faceColors: {
+
+            "U": "#8f8f8f",
+            "F": "#366936",
+            "D": "#7c7c3f",
+            "L": "#81623e",
+            "R": "#834141",
+            "B": "#415a80"
+
+        },
+
+        // 各回転に対応する音声
         sounds: {
-            "U":  "sounds/preset1/C.mp3",
-            "U'": "sounds/preset1/D.mp3",
-            "R":  "sounds/preset1/E.mp3",
-            "R'": "sounds/preset1/F.mp3",
-            "F":  "sounds/preset1/G.mp3",
-            "F'": "sounds/preset1/Gs.mp3",
-            "D":  "sounds/preset1/As.mp3",
-            "D'": "sounds/preset1/Cs.mp3",
-            "L":  "sounds/preset1/B.mp3",
-            "L'": "sounds/preset1/Cs.mp3",
+
+            "U":  "sounds/preset1/D.mp3",
+            "U'": "sounds/preset1/Gs.mp3",
+
+            "R":  "sounds/preset1/C.mp3",
+            "R'": "sounds/preset1/Fs.mp3",
+
+            "F":  "sounds/preset1/F.mp3",
+            "F'": "sounds/preset1/B.mp3",
+
+            "D":  "sounds/preset1/Cs.mp3",
+            "D'": "sounds/preset1/G.mp3",
+
+            "L":  "sounds/preset1/E.mp3",
+            "L'": "sounds/preset1/As.mp3",
+
             "B":  "sounds/preset1/Ds.mp3",
-            "B'": "sounds/preset1/Fs.mp3"
+            "B'": "sounds/preset1/A.mp3"
+
+        },
+
+        // 各回転に対応する表示文字
+        notes: {
+
+            "U'": "Gs",
+            "U":  "D",
+
+            "L":  "E",
+
+            "B'": "A",
+            "B":  "Ds",
+
+            "R'": "Fs",
+
+            "L'": "As",
+
+            "F":  "F",
+            "F'": "B",
+
+            "R":  "C",
+
+            "D":  "Cs",
+            "D'": "G"
+
         }
+
     },
+
 
     preset2: {
+
         name: "Preset 2",
-        faceColors: commonFaceColors,
+
+        faceColors: {
+
+            "U": "#8f8f8f",
+            "F": "#366936",
+            "D": "#7c7c3f",
+            "L": "#81623e",
+            "R": "#834141",
+            "B": "#415a80"
+
+        },
+
         sounds: {
-            "U":  "sounds/preset2/FM.mp3",
-            "U'": "sounds/preset2/Ami.mp3",
-            "R":  "sounds/preset2/E7.mp3",
-            "R'": "sounds/preset2/C7.mp3",
-            "F":  "sounds/preset2/CM.mp3",
-            "F'": "sounds/preset2/CM.mp3",
-            "D":  "sounds/preset2/CM.mp3",
-            "D'": "sounds/preset2/FM.mp3",
-            "L":  "sounds/preset2/Gmi.mp3",
-            "L'": "sounds/preset2/C7.mp3",
-            "B":  "sounds/preset2/C4.mp3",
-            "B'": "sounds/preset2/GM.mp3"
+
+            "U":  "sounds/preset2/C.mp3",
+            "U'": "sounds/preset2/C.mp3",
+
+            "R":  "sounds/preset2/C.mp3",
+            "R'": "sounds/preset2/C.mp3",
+
+            "F":  "sounds/preset2/C.mp3",
+            "F'": "sounds/preset2/C.mp3",
+
+            "D":  "sounds/preset2/C.mp3",
+            "D'": "sounds/preset2/C.mp3",
+
+            "L":  "sounds/preset2/C.mp3",
+            "L'": "sounds/preset2/C.mp3",
+
+            "B":  "sounds/preset2/C.mp3",
+            "B'": "sounds/preset2/C.mp3"
+
+        },
+
+        notes: {
+
+            "U'": "C",
+            "U":  "C",
+
+            "L":  "C",
+
+            "B'": "C",
+            "B":  "C",
+
+            "R'": "C",
+
+            "L'": "C",
+
+            "F":  "C",
+            "F'": "C",
+
+            "R":  "C",
+
+            "D":  "C",
+            "D'": "C"
+
         }
+
     },
 
+
     preset3: {
+
         name: "Preset 3",
-        faceColors: commonFaceColors,
+
+        faceColors: {
+
+            "U": "#8f8f8f",
+            "F": "#366936",
+            "D": "#7c7c3f",
+            "L": "#81623e",
+            "R": "#834141",
+            "B": "#415a80"
+
+        },
+
         sounds: {
-            "U":  "sounds/preset3/clap1.mp3",
-            "U'": "sounds/preset3/stab1.mp3",
+
+            "U":  "sounds/preset3/bd1.mp3",
+            "U'": "sounds/preset3/sn1.mp3",
+
             "R":  "sounds/preset3/hh1.mp3",
             "R'": "sounds/preset3/hh1.mp3",
+
             "F":  "sounds/preset3/hh2.mp3",
             "F'": "sounds/preset3/hh2.mp3",
-            "D":  "sounds/preset3/bd1.mp3",
-            "D'": "sounds/preset3/sn1.mp3",
+
+            "D":  "sounds/preset3/clap1.mp3",
+            "D'": "sounds/preset3/stab1.mp3",
+
             "L":  "sounds/preset3/hh1.mp3",
             "L'": "sounds/preset3/hh1.mp3",
+
             "B":  "sounds/preset3/hh2.mp3",
             "B'": "sounds/preset3/hh2.mp3"
+
+        },
+
+        notes: {
+
+            "U'": "sn1",
+            "U":  "bd1",
+
+            "L":  "hh1",
+
+            "B'": "hh2",
+            "B":  "hh2",
+
+            "R'": "hh1",
+
+            "L'": "hh1",
+
+            "F":  "hh2",
+            "F'": "hh2",
+
+            "R":  "hh1",
+
+            "D":  "clap1",
+            "D'": "stab1"
+
         }
+
     }
 
 };
@@ -292,6 +420,7 @@ function playSound(move) {
 
 }
 
+
 // ==================================================
 // ボタンの表示を更新
 // ==================================================
@@ -360,7 +489,7 @@ function handleMove(move) {
 
     // 現在の回転を表示
     current.textContent =
-        currentPreset.notes[move];
+        move;
 
 
     // 音声再生
@@ -378,25 +507,52 @@ function handleMove(move) {
 for (const item of moves) {
 
     if (item === null) {
-        buttons.appendChild(document.createElement("div"));
+
+        buttons.appendChild(
+            document.createElement(
+                "div"
+            )
+        );
+
         continue;
+
     }
 
-    const button = document.createElement("button");
 
-    button.dataset.move = item.move;
+    const button =
+        document.createElement(
+            "button"
+        );
+
+
+    button.dataset.move =
+        item.move;
+
 
     button.innerHTML = `
-        <span class="move">${item.move}</span>
-        <span class="note">${currentPreset.notes[item.move]}</span>
+        ${item.move}
+        <span class="note">
+            ${currentPreset.notes[item.move]}
+        </span>
     `;
 
+
     button.onclick = async () => {
+
         await enableAudio();
-        handleMove(item.move);
+
+
+        handleMove(
+            item.move
+        );
+
     };
 
-    buttons.appendChild(button);
+
+    buttons.appendChild(
+        button
+    );
+
 }
 
 
