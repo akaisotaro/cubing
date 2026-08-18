@@ -22,24 +22,6 @@ const moves = [
     null
 ];
 
-const faceColors = {
-};
-
-const sounds = {
-    "U":  "sounds/U.mp3",
-    "R":  "sounds/R.mp3",
-    "F":  "sounds/F.mp3",
-    "D":  "sounds/D.mp3",
-    "L":  "sounds/L.mp3",
-    "B":  "sounds/B.mp3",
-    "U'": "sounds/U_.mp3",
-    "R'": "sounds/R_.mp3",
-    "F'": "sounds/F_.mp3",
-    "D'": "sounds/D_.mp3",
-    "L'": "sounds/L_.mp3",
-    "B'": "sounds/B_.mp3"
-};
-
 const PRESET_COUNT = 3;
 
 const presets = {
@@ -86,25 +68,25 @@ const presets = {
         // 各回転に対応する表示文字
         notes: {
 
-            "U'": "1",
-            "U":  "2",
+            "U'": "Gs",
+            "U":  "D",
 
-            "L":  "3",
+            "L":  "E",
 
-            "B'": "4",
-            "B":  "5",
+            "B'": "A",
+            "B":  "Ds",
 
-            "R'": "6",
+            "R'": "Fs",
 
-            "L'": "7",
+            "L'": "As",
 
-            "F":  "8",
-            "F'": "9",
+            "F":  "F",
+            "F'": "B",
 
-            "R":  "10",
+            "R":  "C",
 
-            "D":  "11",
-            "D'": "12"
+            "D":  "Cs",
+            "D'": "G"
 
         }
 
@@ -126,47 +108,47 @@ const presets = {
 
         sounds: {
 
-            "U":  "sounds/preset2/sn2.mp3",
-            "U'": "sounds/preset2/bd2.mp3",
+            "U":  "sounds/preset2/C.mp3",
+            "U'": "sounds/preset2/C.mp3",
 
-            "R":  "sounds/preset2/hh1.mp3",
-            "R'": "sounds/preset2/hh2.mp3",
+            "R":  "sounds/preset2/C.mp3",
+            "R'": "sounds/preset2/C.mp3",
 
-            "F":  "sounds/preset2/hh3.mp3",
-            "F'": "sounds/preset2/hh4.mp3",
+            "F":  "sounds/preset2/C.mp3",
+            "F'": "sounds/preset2/C.mp3",
 
-            "D":  "sounds/preset2/bd1.mp3",
-            "D'": "sounds/preset2/sn1.mp3",
+            "D":  "sounds/preset2/C.mp3",
+            "D'": "sounds/preset2/C.mp3",
 
-            "L":  "sounds/preset2/hh1.mp3",
-            "L'": "sounds/preset2/hh2.mp3",
+            "L":  "sounds/preset2/C.mp3",
+            "L'": "sounds/preset2/C.mp3",
 
-            "B":  "sounds/preset2/hh3.mp3",
-            "B'": "sounds/preset2/hh4.mp3"
+            "B":  "sounds/preset2/C.mp3",
+            "B'": "sounds/preset2/C.mp3"
 
         },
 
         notes: {
 
-            "U'": "A",
-            "U":  "B",
+            "U'": "C",
+            "U":  "C",
 
             "L":  "C",
 
-            "B'": "D",
-            "B":  "E",
+            "B'": "C",
+            "B":  "C",
 
-            "R'": "F",
+            "R'": "C",
 
-            "L'": "G",
+            "L'": "C",
 
-            "F":  "H",
-            "F'": "I",
+            "F":  "C",
+            "F'": "C",
 
-            "R":  "J",
+            "R":  "C",
 
-            "D":  "K",
-            "D'": "L"
+            "D":  "C",
+            "D'": "C"
 
         }
 
@@ -188,47 +170,47 @@ const presets = {
 
         sounds: {
 
-            "U":  "sounds/preset3/D.mp3",
-            "U'": "sounds/preset3/Gs.mp3",
+            "U":  "sounds/preset3/bd1.mp3",
+            "U'": "sounds/preset3/sn1.mp3",
 
-            "R":  "sounds/preset3/C.mp3",
-            "R'": "sounds/preset3/Fs.mp3",
+            "R":  "sounds/preset3/hh1.mp3",
+            "R'": "sounds/preset3/hh1.mp3",
 
-            "F":  "sounds/preset3/F.mp3",
-            "F'": "sounds/preset3/B.mp3",
+            "F":  "sounds/preset3/hh2.mp3",
+            "F'": "sounds/preset3/hh2.mp3",
 
-            "D":  "sounds/preset3/Cs.mp3",
-            "D'": "sounds/preset3/G.mp3",
+            "D":  "sounds/preset3/clap1.mp3",
+            "D'": "sounds/preset3/stab1.mp3",
 
-            "L":  "sounds/preset3/E.mp3",
-            "L'": "sounds/preset3/As.mp3",
+            "L":  "sounds/preset3/hh1.mp3",
+            "L'": "sounds/preset3/hh1.mp3",
 
-            "B":  "sounds/preset3/Ds.mp3",
-            "B'": "sounds/preset3/A.mp3"
+            "B":  "sounds/preset3/hh2.mp3",
+            "B'": "sounds/preset3/hh2.mp3"
 
         },
 
         notes: {
 
-            "U'": "1",
-            "U":  "2",
+            "U'": "sn1",
+            "U":  "bd1",
 
-            "L":  "3",
+            "L":  "hh1",
 
-            "B'": "4",
-            "B":  "5",
+            "B'": "hh2",
+            "B":  "hh2",
 
-            "R'": "6",
+            "R'": "hh1",
 
-            "L'": "7",
+            "L'": "hh1",
 
-            "F":  "8",
-            "F'": "9",
+            "F":  "hh2",
+            "F'": "hh2",
 
-            "R":  "10",
+            "R":  "hh1",
 
-            "D":  "11",
-            "D'": "12"
+            "D":  "clap1",
+            "D'": "stab1"
 
         }
 
